@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "$db/*": ["db/*"],
+            "$module/*": ["module/*"],
+            "$security/*": ["security/*"],
+            "$source/*": ["source/*"],
+            "$utility/*": ["utility/*"],
+            "$config": ["source/config"]
+        }
+    },
+    "exclude": ["node_modules"]
+}

@@ -1,0 +1,27 @@
+{
+    "name": "guest-book-service",
+    "private": true,
+    "version": "0.0.1",
+    "type": "module",
+    "scripts": {
+        "start": "bun source/app.js",
+        "dev": "bun --watch source/app.js",
+        "db:generate": "bunx drizzle-kit generate",
+        "db:migrate": "bunx drizzle-kit migrate",
+        "db:push": "bunx drizzle-kit push"
+    },
+    "devDependencies": {
+        "drizzle-kit": "^0.31.10"
+    },
+    "dependencies": {
+        "@elysiajs/bearer": "^1.4.3",
+        "@elysiajs/cors": "^1.4.1",
+        "bcrypt": "^6.0.0",
+        "better-auth": "^1.5.6",
+        "drizzle-orm": "^0.45.2",
+        "elysia": "latest",
+        "elysia-helmet": "^3.1.0",
+        "elysia-rate-limit": "^4.5.1",
+        "mysql2": "^3.20.0"
+    }
+}
