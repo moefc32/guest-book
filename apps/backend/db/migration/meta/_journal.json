@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1775453609822,
+      "tag": "0000_red_agent_brand",
+      "breakpoints": true
+    }
+  ]
+}

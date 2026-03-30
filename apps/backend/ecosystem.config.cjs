@@ -22,12 +22,13 @@ module.exports = {
     apps: [
         {
             name: packageJson.name,
-            script: 'source/index.ts',
+            script: 'source/app.js',
             interpreter: 'bun',
             env: {
-                HOST: Bun.env.IPBIND || '127.0.0.1',
-                PORT: parseInt(Bun.env.PORT, 10) || 4000,
-                BODY_SIZE_LIMIT: parseSize(Bun.env.SIZE_LIMIT),
+                HOST: process.env.IPBIND || '127.0.0.1',
+                PORT: parseInt(process.env.PORT, 10) || 4000,
+                BODY_SIZE_LIMIT: parseSize(process.env.SIZE_LIMIT),
+                PATH: `${process.env.HOME}/.bun/bin:${process.env.PATH}`
             },
         },
     ],

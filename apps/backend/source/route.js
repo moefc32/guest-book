@@ -4,13 +4,21 @@ import route from './elysia';
 import auth from './auth';
 
 import defaultRoutes from '$module/default';
-import microserviceRoutes from '$module/microservice';
+import configRoutes from '$module/config';
+import dashboardRoutes from '$module/dashboard';
+import guestRoutes from '$module/guest';
+import eventRoutes from '$module/event';
+import staticRoutes from '$module/static';
 
 // Modular routes start here
 
 route
     .use(defaultRoutes)
-    .use(new Elysia({ prefix: '/microservice' }).use(microserviceRoutes))
+    .use(new Elysia({ prefix: '/config' }).use(configRoutes))
+    .use(new Elysia({ prefix: '/dashboard' }).use(dashboardRoutes))
+    .use(new Elysia({ prefix: '/guest' }).use(guestRoutes))
+    .use(new Elysia({ prefix: '/event' }).use(eventRoutes))
+    .use(new Elysia({ prefix: '/static' }).use(staticRoutes))
     .all('/auth/*', (ctx) => auth.handler(ctx.request))
     .onError(({ code, error, status }) => {
         console.error(`[${code}] ${error.message}`);
