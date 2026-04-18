@@ -2,8 +2,8 @@ import { APP_NAME } from '$config';
 import { Elysia, t, NotFoundError } from 'elysia';
 import m2mAuth from '$security/m2mAuth';
 import { sql, eq, asc, desc, count } from 'drizzle-orm';
-import { db } from '$db/drizzle';
 import { Guests, Events, Units } from '$db/schema';
+import db from '$db/drizzle';
 
 function formatData(data) {
     return data.reduce((acc, row) => {

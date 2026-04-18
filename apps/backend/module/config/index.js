@@ -4,8 +4,8 @@ import { $ } from 'bun';
 import { join } from 'node:path';
 import m2mAuth from '$security/m2mAuth';
 import { asc, eq, inArray } from 'drizzle-orm';
-import { db } from '$db/drizzle';
 import { Configs, Units } from '$db/schema';
+import db from '$db/drizzle';
 import pngConvert from '$utility/pngConvert';
 
 const PUBLIC_PATH = join(process.cwd(), 'public');
@@ -16,20 +16,41 @@ const ALLOWED_MIMES = {
 };
 
 const TypeBody = t.Object({
-    name: t.String({ maxLength: 100 }),
-    place: t.String({ maxLength: 250 }),
-    organizer: t.String({ maxLength: 100 }),
-    chief: t.String({ maxLength: 100 }),
-    labelId: t.String({ maxLength: 30 }),
-    labelUnit: t.String({ maxLength: 30 }),
+    name: t.String({
+        minLength: 1,
+        maxLength: 100,
+    }),
+    place: t.String({
+        minLength: 1,
+        maxLength: 250,
+    }),
+    organizer: t.String({
+        minLength: 1,
+        maxLength: 100,
+    }),
+    chief: t.String({
+        minLength: 1,
+        maxLength: 100,
+    }),
+    labelId: t.String({
+        minLength: 1,
+        maxLength: 30,
+    }),
+    labelUnit: t.String({
+        minLength: 1,
+        maxLength: 30,
+    }),
     editUnits: t.Array(
         t.Object({
-            id: t.Optional(t.Integer()),
-            name: t.String({ maxLength: 100 }),
-            sortOrder: t.Integer(),
+            id: t.Optional(t.Integer({ minimum: 1 })),
+            name: t.String({
+                minLength: 1,
+                maxLength: 100,
+            }),
+            sortOrder: t.Integer({ minimum: 1 }),
         })
     ),
-    deleteUnits: t.Array(t.Integer()),
+    deleteUnits: t.Array(t.Integer({ minimum: 1 })),
 });
 
 export default new Elysia({ name: 'config-routes' })

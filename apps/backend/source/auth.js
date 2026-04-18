@@ -13,7 +13,7 @@ import {
 import { betterAuth } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { admin, captcha, jwt } from 'better-auth/plugins';
-import { db } from '$db/drizzle';
+import db from '$db/drizzle';
 
 export default betterAuth({
     appName: APP_NAME,

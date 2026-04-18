@@ -23,8 +23,7 @@ export const Events = mysqlTable('Events', {
     labelId: varchar('label_id', { length: 30 }),
     labelUnit: varchar('label_unit', { length: 30 }),
 }, (table) => ({
-    publicIdIdx: uniqueIndex('events_public_id_idx')
-        .on(table.publicId),
+    publicIdIdx: uniqueIndex('events_public_id_idx').on(table.publicId),
 }));
 
 export const Units = mysqlTable('Units', {
