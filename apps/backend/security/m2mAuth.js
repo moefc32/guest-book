@@ -2,8 +2,8 @@ import { Elysia } from 'elysia';
 import { UnauthorizedError } from '$source/elysia';
 import { createHmac, timingSafeEqual } from 'node:crypto';
 import { eq } from 'drizzle-orm';
-import { db } from '$db/drizzle';
 import { MicroserviceSecrets } from '$db/schema';
+import db from '$db/drizzle';
 
 export default new Elysia({ name: 'm2m-auth' })
     .onBeforeHandle({ as: 'global' }, async ({ request }) => {

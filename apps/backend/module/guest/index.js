@@ -2,16 +2,31 @@ import { APP_NAME } from '$config';
 import { Elysia, t } from 'elysia';
 import m2mAuth from '$security/m2mAuth';
 import { eq } from 'drizzle-orm';
-import { db } from '$db/drizzle';
 import { Guests } from '$db/schema';
+import db from '$db/drizzle';
 
 const TypeBody = t.Object({
-    name: t.String({ maxLength: 50 }),
-    identity: t.Optional(t.String({ maxLength: 20 })),
-    unitName: t.Optional(t.String({ maxLength: 100 })),
-    unitId: t.Optional(t.Integer()),
-    email: t.String({ format: 'email', maxLength: 255 }),
-    phone: t.Optional(t.String({ maxLength: 20 })),
+    name: t.String({
+        minLength: 1,
+        maxLength: 50,
+    }),
+    identity: t.Optional(t.String({
+        minLength: 1,
+        maxLength: 20,
+    })),
+    unitName: t.Optional(t.String({
+        minLength: 1,
+        maxLength: 100,
+    })),
+    unitId: t.Optional(t.Integer({ minimum: 1 })),
+    email: t.String({
+        format: 'email',
+        maxLength: 255,
+    }),
+    phone: t.Optional(t.String({
+        minLength: 1,
+        maxLength: 20,
+    })),
 });
 
 export default new Elysia({ name: 'guest-routes' })
@@ -42,7 +57,7 @@ export default new Elysia({ name: 'guest-routes' })
         })
         .guard({
             params: t.Object({
-                id: t.Numeric(),
+                id: t.Integer({ minimum: 1 }),
             }),
         }, (app) => app
             .patch('/:id', async ({ params: { id }, body, status }) => {

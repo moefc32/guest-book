@@ -1,6 +1,6 @@
 import { eq, sql } from 'drizzle-orm';
-import { db } from '$db/drizzle';
 import { MicroserviceSecrets, Users } from '$db/schema';
+import db from '$db/drizzle';
 import auth from '$source/auth';
 import { print } from './cli';
 
