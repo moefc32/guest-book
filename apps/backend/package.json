@@ -12,16 +12,17 @@
         "db:push": "bunx drizzle-kit push"
     },
     "devDependencies": {
-        "drizzle-kit": "^0.31.10"
+        "drizzle-kit": "^0.31.11"
     },
     "dependencies": {
         "@elysiajs/cors": "^1.4.2",
         "@elysiajs/static": "^1.4.10",
-        "better-auth": "^1.6.9",
-        "drizzle-orm": "^0.45.2",
+        "better-auth": "^1.7.13",
+        "drizzle-orm": "^0.45.4",
         "elysia": "latest",
         "elysia-helmet": "^3.1.0",
-        "elysia-rate-limit": "^4.6.1",
-        "mysql2": "^3.22.3"
+        "elysia-rate-limit": "^4.6.3",
+        "mysql2": "^3.24.6",
+        "sharp": "^0.35.5"
     }
 }
